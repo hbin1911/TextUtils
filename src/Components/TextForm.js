@@ -45,16 +45,16 @@ export default function TexthtmlForm(props) {
         
     ></textarea>
     </div>
-    <button className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>To Uppercase</button>
-    <button className="btn btn-primary mx-2 my-2 " onClick={handleDownClick}>To Lowercase</button>
-    <button className="btn btn-primary mx-2 my-2 " onClick={clearText}>Clear</button>
+    <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleUpClick}>To Uppercase</button>
+    <button disabled={text.length===0} className="btn btn-primary mx-2 my-2 " onClick={handleDownClick}>To Lowercase</button>
+    <button disabled={text.length===0} className="btn btn-primary mx-2 my-2 " onClick={clearText}>Clear</button>
     </div>
     <div className="container my-3" style={{color : props.mode==='dark'? 'white' : 'black'}}>
         <h1>Your summary</h1>
         <p>{text.split(' ').filter((element)=>{return element.length!==0}).length} words and {text.length} letters</p>
-        <p>{0.008 * text.split(' ').length} Minutes to read</p>
+        <p>{0.008 * text.split(' ').filter((element)=>{return element.length!==0}).length} Minutes to read</p>
         <h2>Preview</h2>
-        <p>{text}</p>
+        <p>{text.length>0?text : "Nothing to preview!"}</p>
 
     </div>
     </>
